@@ -1,13 +1,17 @@
-name: Release
- on:  
-  workflow_dispatch:   
- jobs:  
- newrelic:    
-   runs-on:ubuntu-latest    
-   steps:      
-    - name:my-step        
-#       run:echo "Hello World!"
-#       run:|
-#         curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/YOURNAME/APPLICATION_NAME/dispatches --data '{"event_type": "build_application"}'
-       run: |
-       curl.exe -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/raavimanikanta/nodejs2/dispatches --data '{\"event_type\": \"build_application\"}'
+name: Trigger another repo
+on:
+  workflow_dispatch:
+    inputs:
+      repo_name:
+        description: 'nodejs2'
+        required: true
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger another repo
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          repository: ${{ github.event.inputs.repo_name }}
+          event-type: trigger-another-repo
