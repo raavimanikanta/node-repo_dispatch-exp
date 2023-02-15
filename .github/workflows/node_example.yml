@@ -1,26 +1,15 @@
-name: Node_repo_trigger
-
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm start
-      - run: |
+name: Release
+ on:  
+ push:    
+  branches:[ "main", "master" ]  
+ pull_request:    
+  branches:[ "main", "master" ]  
+  workflow_dispatch:   
+jobs:  
+ newrelic:    
+   runs-on: ubuntu-latest    
+   steps:      
+    - name: my-step        
+      run: echo "Hello World!"
+    - run: |
          curl.exe -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/raavimanikanta/https://github.com/raavimanikanta/node-repo_dispatch-exp/dispatches --data '{\"event_type\": \"build_application\"}'
