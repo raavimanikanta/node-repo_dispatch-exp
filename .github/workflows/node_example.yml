@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       repo_name:
-        description: 'nodejs2'
+        description: 'node-trigger-app'
         required: true
 jobs:
   trigger:
@@ -13,5 +13,5 @@ jobs:
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.PAT_TOKEN }}
-          repository: ${{ github.event.inputs.repo_name }}
+          repository: ${{ github.event.inputs.repo_name.description }}
           event-type: trigger-another-repo
