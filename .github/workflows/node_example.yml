@@ -10,4 +10,4 @@ name: Release
 #       run:|
 #         curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/YOURNAME/APPLICATION_NAME/dispatches --data '{"event_type": "build_application"}'
       run:|
-      curl.exe -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept:application/vnd.github.everest-preview+json" -H "Content-Type:application/json" https://api.github.com/repos/raavimanikanta/https://github.com/raavimanikanta/node-repo_dispatch-exp/dispatches --data '{\"event_type\": "build_application"}'
+      curl.exe -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept:application/vnd.github.everest-preview+json" -H "Content-Type:application/json" https://api.github.com/repos/raavimanikanta/https://github.com/raavimanikanta/nodejs2/dispatches --data '{\"event_type\": "build_application"}'
