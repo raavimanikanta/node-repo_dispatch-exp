@@ -5,11 +5,13 @@ name: Release
  pull_request:    
   branches:[ "main", "master" ]  
   workflow_dispatch:   
-jobs:  
+ jobs:  
  newrelic:    
-   runs-on: ubuntu-latest    
+   runs-on:ubuntu-latest    
    steps:      
-    - name: my-step        
-      run: echo "Hello World!"
-    - run: |
-         curl.exe -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/raavimanikanta/https://github.com/raavimanikanta/node-repo_dispatch-exp/dispatches --data '{\"event_type\": \"build_application\"}'
+    - name:my-step        
+      run:echo "Hello World!"
+#       run:|
+#         curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/YOURNAME/APPLICATION_NAME/dispatches --data '{"event_type": "build_application"}'
+      run:|
+       curl.exe -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept:application/vnd.github.everest-preview+json" -H "Content-Type:application/json" https://api.github.com/repos/raavimanikanta/https://github.com/raavimanikanta/node-repo_dispatch-exp/dispatches --data '{\"event_type\": "build_application"}'
